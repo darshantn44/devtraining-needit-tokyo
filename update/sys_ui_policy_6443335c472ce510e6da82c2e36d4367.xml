@@ -16,7 +16,7 @@
         <run_scripts>true</run_scripts>
         <script_false><![CDATA[function onCondition() {
 	
-	//g_form.hideFieldMsg('u_other',true);
+	g_form.hideFieldMsg('u_other',true);
 
 }]]></script_false>
         <script_true><![CDATA[function onCondition() {
