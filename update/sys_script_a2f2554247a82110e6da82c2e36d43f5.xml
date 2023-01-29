@@ -27,7 +27,7 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[// rightnow stores the current time
+        <script><![CDATA[/*rightnow stores the current time
   var rightnow = new GlideDateTime();
   // Create a GlideDateTime object for the When needed date
   var whenNeeded = new GlideDateTime(current.u_when_needed);
@@ -46,7 +46,22 @@
   if(today.compareTo(istoday) == 0){
     gs.addErrorMessage("You cannot submit NeedIt requests for today.");
     current.setAbortAction(true);
-  }]]></script>
+  } */
+
+var niutil = new NeedItUtils();
+var isPast = niutil.isPastDate(current.u_when_needed);
+var today  = niutil.isCurrentDate(current.u_when_needed);
+
+if (isPast == true) {
+    gs.addErrorMessage("When needed date cannot be in the past.  Your request has not been saved to the database.");
+	current.setAbortAction(true);
+} 
+
+if (today == true){
+	gs.addErrorMessage("When Needed date cannot be in the current date. Your request is not saved to database");
+	current.setAbortAction(true);
+}
+]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-01-23 19:59:31</sys_created_on>

@@ -33,7 +33,7 @@
 	
 	if(isEmail == false){
 		
-		gs.addErrorMessage(current.u_requested_for_email + 'is not a valid email address.  You must provide a valid email address.');
+		gs.addErrorMessage(current.u_requested_for_email + ' is not a valid email address.  You must provide a valid email address.');
 		current.setAbortAction(true);
 	}
 
